@@ -18,9 +18,6 @@
 	<ctx:annotation-config />
 	<mvc:annotation-driven />
 
-	 <!-- JSON Support -->
-    <bean name="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>    
-
 	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
