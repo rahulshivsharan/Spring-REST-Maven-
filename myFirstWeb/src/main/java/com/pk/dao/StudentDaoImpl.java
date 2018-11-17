@@ -5,6 +5,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,7 @@ import com.pk.vo.StudentVO;
 public class StudentDaoImpl implements StudentDao{
 
 	@Autowired	
+	@Qualifier("datasource")
 	private DataSource dataSource;
 	
 	public DataSource getDataSource() {
