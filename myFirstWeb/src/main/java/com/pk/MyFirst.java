@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,6 +64,21 @@ public class MyFirst{
 		ResponseEntity<List<StudentVO>> responseEntity = null;		
 		try {			
 			list = this.service.getAll();
+			responseEntity = new ResponseEntity<List<StudentVO>>(list,HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}	
+		
+		return responseEntity;
+	}
+	
+	@RequestMapping(value="/student",method=RequestMethod.POST,produces="application/json",consumes="application/json")
+	public ResponseEntity<List<StudentVO>> createStudent(@RequestBody StudentVO vo){		
+		List<StudentVO> list = null;
+		ResponseEntity<List<StudentVO>> responseEntity = null;		
+		try {
+			System.out.println(" POST Student "+vo);
+			list = this.service.createStudent(vo);
 			responseEntity = new ResponseEntity<List<StudentVO>>(list,HttpStatus.OK);
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -24,10 +24,16 @@ public class StudentServiceImpl implements StudentService{
 		this.dao = dao;
 	}
 
-	public List<StudentVO> getAll() throws Exception {
+	
+	public List<StudentVO> getAll()  throws Exception{
 		List<StudentVO> studentList = null;		
 		studentList = this.dao.getAll();
 		return studentList;
 	}
 	
+	
+	public List<StudentVO> createStudent(StudentVO vo) throws Exception {
+		List<StudentVO> studentList = this.dao.createStudent(vo);
+		return studentList;
+	}
 }
