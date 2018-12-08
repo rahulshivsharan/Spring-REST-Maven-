@@ -53,5 +53,21 @@ public class StudentDaoImpl implements StudentDao{
 		List<StudentVO> studentList = this.getAll();		
 		return studentList;
 	}
+
+	public List<StudentVO> editStudent(final StudentVO vo) throws Exception {
+		String sql = "update Rahul.StudentTBL set NAME = ? where ID = ?";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		PreparedStatementSetter pss = new PreparedStatementSetter() {
+
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setString(1, vo.getStudentName());
+				ps.setInt(2, vo.getStudentId());				
+			}
+			
+		};
+		int insertCount = jdbcTemplate.update(sql, pss);
+		List<StudentVO> studentList = this.getAll();
+		return studentList;
+	}
 	
 }

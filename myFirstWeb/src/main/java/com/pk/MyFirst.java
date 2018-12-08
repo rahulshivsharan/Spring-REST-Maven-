@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -79,6 +80,22 @@ public class MyFirst{
 		try {
 			System.out.println(" POST Student "+vo);
 			list = this.service.createStudent(vo);
+			responseEntity = new ResponseEntity<List<StudentVO>>(list,HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}	
+		
+		return responseEntity;
+	}
+	
+	@RequestMapping(value="/student/{id}",method=RequestMethod.PUT,produces="application/json",consumes="application/json")
+	public ResponseEntity<List<StudentVO>> editStudent(@PathVariable("id") int studentId, @RequestBody StudentVO vo){		
+		List<StudentVO> list = null;
+		ResponseEntity<List<StudentVO>> responseEntity = null;		
+		try {
+			vo.setStudentId(studentId);
+			System.out.println(" Edit Student "+vo);
+			list = this.service.editStudent(vo);
 			responseEntity = new ResponseEntity<List<StudentVO>>(list,HttpStatus.OK);
 		}catch(Exception e) {
 			e.printStackTrace();

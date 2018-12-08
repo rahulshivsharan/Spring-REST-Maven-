@@ -36,4 +36,9 @@ public class StudentServiceImpl implements StudentService{
 		List<StudentVO> studentList = this.dao.createStudent(vo);
 		return studentList;
 	}
+
+	public List<StudentVO> editStudent(StudentVO vo) throws Exception {
+		List<StudentVO> studentList = this.dao.editStudent(vo);
+		return studentList;
+	}
 }
