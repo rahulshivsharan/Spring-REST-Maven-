@@ -103,4 +103,20 @@ public class MyFirst{
 		
 		return responseEntity;
 	}
+	
+	@RequestMapping(value="/student/{id}",method=RequestMethod.DELETE,produces="application/json")
+	public ResponseEntity<List<StudentVO>> deleteStudent(@PathVariable("id") int studentId){		
+		List<StudentVO> list = null;
+		ResponseEntity<List<StudentVO>> responseEntity = null;		
+		try {
+			
+			System.out.println(" Delete Student "+studentId);
+			list = this.service.deleteStudent(studentId);
+			responseEntity = new ResponseEntity<List<StudentVO>>(list,HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}	
+		
+		return responseEntity;
+	}
 }

@@ -70,4 +70,19 @@ public class StudentDaoImpl implements StudentDao{
 		return studentList;
 	}
 	
+	public List<StudentVO> deleteStudent(final int studentId) throws Exception {
+		String sql = "delete from Rahul.StudentTBL where ID = ?";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		PreparedStatementSetter pss = new PreparedStatementSetter() {
+
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setInt(1, studentId);								
+			}
+			
+		};
+		int insertCount = jdbcTemplate.update(sql, pss);
+		List<StudentVO> studentList = this.getAll();
+		return studentList;
+	}
+	
 }
