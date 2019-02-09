@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.pk.dao.StudentDao;
+import com.pk.dao.student.StudentDao;
 import com.pk.vo.StudentVO;
 
 @Service("studentService")

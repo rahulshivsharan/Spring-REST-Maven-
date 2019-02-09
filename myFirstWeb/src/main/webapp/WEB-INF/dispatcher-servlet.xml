@@ -17,6 +17,10 @@
 	<ctx:component-scan base-package="com.*" />
 	<ctx:annotation-config />
 	<mvc:annotation-driven />
+	<aop:aspectj-autoproxy />
+	
+	<!-- bean class="org.springframework.validation.beanvalidation.BeanValidationPostProcessor" />
+	<bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor" / -->
 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />

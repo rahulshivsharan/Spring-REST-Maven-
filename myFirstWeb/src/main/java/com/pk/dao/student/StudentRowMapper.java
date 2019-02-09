@@ -1,4 +1,4 @@
-package com.pk.dao;
+package com.pk.dao.student;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
